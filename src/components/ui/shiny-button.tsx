@@ -1,17 +1,17 @@
 "use client"
 
 import type React from "react"
-import { motion, type AnimationProps } from "framer-motion"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
-const animationProps: AnimationProps = {
+const animationProps = {
   initial: { "--x": "100%", scale: 0.8 },
   animate: { "--x": "-100%", scale: 1 },
   whileTap: { scale: 0.95 },
   transition: {
-    repeat: Number.POSITIVE_INFINITY,
-    repeatType: "loop",
+    repeat: Infinity,
+    repeatType: "loop" as const,
     repeatDelay: 1,
     type: "spring",
     stiffness: 20,
@@ -24,18 +24,20 @@ const animationProps: AnimationProps = {
       mass: 0.5,
     },
   },
-}
+} as const
 
 interface ShinyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   className?: string
 }
 
-export const ShinyButton: React.FC<ShinyButtonProps> = ({ children, className, ...props }) => {
+export const ShinyButton: React.FC<ShinyButtonProps> = ({ children, className, onClick, disabled, type }) => {
   return (
     <motion.button
       {...animationProps}
-      {...props}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
       className={cn(
         "relative rounded-lg px-8 py-4 uppercase tracking-wide overflow-hidden font-open-sans-custom text-xs scale-90",
         "bg-white/20 backdrop-blur-sm border-2 border-white/30",
