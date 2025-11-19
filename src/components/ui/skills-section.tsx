@@ -1,4 +1,5 @@
 import { BentoCard } from "./bento-card"
+import { useLanguage } from "@/context/LanguageContext"
 import { 
   SiReact, 
   SiTypescript, 
@@ -15,7 +16,7 @@ import {
   SiDocker,
   SiGithubactions
 } from "react-icons/si"
-import { Lightbulb, Users, BookOpen, Target, Zap, MessageSquare, Clock, GraduationCap, Palette, Dumbbell } from "lucide-react"
+import { Lightbulb, Users, BookOpen, Target, Zap, MessageSquare, GraduationCap, Palette } from "lucide-react"
 
 const frontendSkills = [
   { icon: SiReact, name: "React", color: "#61DAFB" },
@@ -41,12 +42,12 @@ const toolsSkills = [
 ]
 
 const softSkills = [
-  { icon: Lightbulb, name: "Problem Solving", description: "Analytical thinking & debugging" },
-  { icon: Target, name: "Attention to Detail", description: "Pixel-perfect & accessible design" },
-  { icon: Users, name: "Team Collaboration", description: "Git workflow & code reviews" },
-  { icon: BookOpen, name: "Continuous Learning", description: "Always improving & adapting" },
-  { icon: Zap, name: "Agile Methodology", description: "Scrum & sprint planning" },
-  { icon: MessageSquare, name: "Communication", description: "Clear documentation & feedback" },
+  { icon: Lightbulb, name: "skill.problemSolving", description: "skill.problemSolving.desc" },
+  { icon: Target, name: "skill.attention", description: "skill.attention.desc" },
+  { icon: Users, name: "skill.teamwork", description: "skill.teamwork.desc" },
+  { icon: BookOpen, name: "skill.learning", description: "skill.learning.desc" },
+  { icon: Zap, name: "skill.agile", description: "skill.agile.desc" },
+  { icon: MessageSquare, name: "skill.communication", description: "skill.communication.desc" },
 ]
 
 interface SkillCardProps {
@@ -67,15 +68,17 @@ function SkillIcon({ icon: Icon, name, color }: SkillCardProps) {
 }
 
 export function SkillsSection() {
+  const { t } = useLanguage()
+  
   return (
     <section id="skills" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
       <div className="mx-auto w-full max-w-6xl">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
-            Skills & Technologies
+            {t('skills.title')}
           </h1>
           <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-            Building modern web experiences with cutting-edge technologies
+            {t('skills.subtitle')}
           </p>
         </div>
 
@@ -83,7 +86,7 @@ export function SkillsSection() {
           <div className="flex flex-col gap-4">
             <BentoCard className="flex flex-col">
               <h3 className="text-2xl font-bold text-white mb-6 font-open-sans-custom">
-                Professional Skills
+                {t('skills.professional')}
               </h3>
               <div className="space-y-5">
                 {softSkills.map((skill) => (
@@ -93,10 +96,10 @@ export function SkillsSection() {
                     </div>
                     <div>
                       <h4 className="text-white font-semibold text-lg font-open-sans-custom">
-                        {skill.name}
+                        {t(skill.name)}
                       </h4>
                       <p className="text-gray-400 text-base mt-1">
-                        {skill.description}
+                        {t(skill.description)}
                       </p>
                     </div>
                   </div>
@@ -106,7 +109,7 @@ export function SkillsSection() {
 
             <BentoCard className="flex-1">
               <h3 className="text-2xl font-bold text-white mb-6 font-open-sans-custom">
-                Beyond Code
+                {t('skills.beyond')}
               </h3>
               <div className="space-y-5">
                 <div className="flex items-start gap-4 group">
@@ -115,10 +118,10 @@ export function SkillsSection() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-lg font-open-sans-custom">
-                      Education
+                      {t('beyond.education')}
                     </h4>
                     <p className="text-gray-400 text-base mt-1">
-                      Computer Science Degree - IUT Valence
+                      {t('beyond.education.desc')}
                     </p>
                   </div>
                 </div>
@@ -129,10 +132,10 @@ export function SkillsSection() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-lg font-open-sans-custom">
-                      UI/UX Design
+                      {t('beyond.design')}
                     </h4>
                     <p className="text-gray-400 text-base mt-1">
-                      Passionate about user experience
+                      {t('beyond.design.desc')}
                     </p>
                   </div>
                 </div>
@@ -144,7 +147,7 @@ export function SkillsSection() {
           <div className="flex flex-col gap-4">
             <BentoCard>
               <h3 className="text-2xl font-bold text-white mb-6 font-open-sans-custom">
-                Frontend Development
+                {t('skills.frontend')}
               </h3>
               <div className="grid grid-cols-3 gap-6">
                 {frontendSkills.map((skill) => (
@@ -155,7 +158,7 @@ export function SkillsSection() {
 
             <BentoCard>
               <h3 className="text-2xl font-bold text-white mb-6 font-open-sans-custom">
-                Backend & Database
+                {t('skills.backend')}
               </h3>
               <div className="grid grid-cols-4 gap-6">
                 {backendSkills.map((skill) => (
@@ -166,7 +169,7 @@ export function SkillsSection() {
 
             <BentoCard>
               <h3 className="text-2xl font-bold text-white mb-6 font-open-sans-custom">
-                Tools & Workflow
+                {t('skills.tools')}
               </h3>
               <div className="grid grid-cols-2 gap-6">
                 {toolsSkills.map((skill) => (

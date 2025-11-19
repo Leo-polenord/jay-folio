@@ -1,8 +1,11 @@
 import { forwardRef } from "react"
 import { AboutQuote } from "./about-quote"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/context/LanguageContext"
 
 export const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
+  const { t } = useLanguage()
+  
   return (
     <section
       id="about"
@@ -23,10 +26,10 @@ export const AboutSection = forwardRef<HTMLElement>((_props, ref) => {
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
-            About Me
+            {t('about.title')}
           </h1>
           <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-            Passionate about creating seamless digital experiences that combine aesthetics with functionality.
+            {t('about.subtitle')}
           </p>
         </div>
         <AboutQuote />

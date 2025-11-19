@@ -6,8 +6,11 @@ import { Textarea } from "./textarea"
 import { BentoCard, BentoCardWithIcon } from "./bento-card"
 import { Mail, MapPin, Download } from "lucide-react"
 import { SiGithub, SiLinkedin } from "react-icons/si"
+import { useLanguage } from "@/context/LanguageContext"
 
 export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
+  const { t } = useLanguage()
+  
   return (
     <section
       id="contact"
@@ -17,53 +20,53 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
       <div className="mx-auto w-full max-w-6xl">
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
-            Get in Touch
+            {t('contact.title')}
           </h1>
           <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-            Let's work together on your next project
+            {t('contact.subtitle')}
           </p>
         </div>
 
         <BentoCard className="mb-4 text-center">
           <p className="text-white/90 text-lg font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-                Available for freelance opportunities and collaborations
+                {t('contact.availability')}
           </p>
         </BentoCard>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <BentoCard className="md:col-span-2">
             <h3 className="text-xl font-bold text-white mb-4 font-open-sans-custom">
-              Send a Message
+              {t('contact.form.title')}
             </h3>
             <form className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
                   <Label className="text-white [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] font-open-sans-custom">
-                    Name
+                    {t('contact.form.name')}
                   </Label>
                   <Input
                     type="text"
-                    placeholder="John Doe"
+                    placeholder={t('contact.form.placeholder.name')}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label className="text-white [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] font-open-sans-custom">
-                    Email
+                    {t('contact.form.email')}
                   </Label>
                   <Input
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder={t('contact.form.placeholder.email')}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <Label className="text-white [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] font-open-sans-custom">
-                  Message
+                  {t('contact.form.message')}
                 </Label>
                 <Textarea 
-                  placeholder="Tell me..."
+                  placeholder={t('contact.form.placeholder.message')}
                   rows={5}
                   className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] resize-none" 
                 />
@@ -72,7 +75,7 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
                 className="w-full bg-white text-black hover:bg-gray-100 [text-shadow:_0_1px_2px_rgb(0_0_0_/_10%)] font-open-sans-custom"
                 type="button"
               >
-                Send Message
+                {t('contact.form.send')}
               </Button>
             </form>
           </BentoCard>
@@ -80,7 +83,7 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
           <div className="flex flex-col gap-4">
             <BentoCardWithIcon
               icon={<Mail className="h-5 w-5 text-white" />}
-              title="Email"
+              title={t('contact.email')}
             >
               <a href="mailto:leopaul.jay@outlook.com" className="text-gray-300 hover:text-white transition-colors text-sm">
                 leopaul.jay@outlook.com
@@ -89,16 +92,16 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
 
             <BentoCardWithIcon
               icon={<MapPin className="h-5 w-5 text-white" />}
-              title="Location"
+              title={t('contact.location')}
             >
               <p className="text-gray-300 text-sm">
-                France
+                {t('contact.location.value')}
               </p>
             </BentoCardWithIcon>
 
             <div className="grid grid-cols-2 gap-4">
               <BentoCard hover>
-                <h4 className="text-white font-semibold font-open-sans-custom mb-4">Follow Me</h4>
+                <h4 className="text-white font-semibold font-open-sans-custom mb-4">{t('contact.follow')}</h4>
                 <div className="flex gap-3">
                   <a 
                     href="https://github.com/Leo-polenord" 
@@ -120,14 +123,14 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
               </BentoCard>
 
               <BentoCard hover>
-                <h4 className="text-white font-semibold font-open-sans-custom mb-4">Resume</h4>
+                <h4 className="text-white font-semibold font-open-sans-custom mb-4">{t('contact.resume')}</h4>
                 <a 
                   href="/cv.pdf" 
                   download
                   className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
                 >
                   <Download className="h-5 w-5 text-white" />
-                  <span className="text-white text-sm">My CV</span>
+                  <span className="text-white text-sm">{t('contact.download')}</span>
                 </a>
               </BentoCard>
             </div>
