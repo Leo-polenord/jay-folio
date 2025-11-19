@@ -4,7 +4,7 @@ import { Button } from "./button"
 import { Label } from "./label"
 import { Textarea } from "./textarea"
 import { BentoCard, BentoCardWithIcon } from "./bento-card"
-import { Mail, MapPin } from "lucide-react"
+import { Mail, MapPin, Download } from "lucide-react"
 import { SiGithub, SiLinkedin } from "react-icons/si"
 
 export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
@@ -63,7 +63,7 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
                   Message
                 </Label>
                 <Textarea 
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell me..."
                   rows={5}
                   className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 [text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] resize-none" 
                 />
@@ -96,27 +96,41 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
               </p>
             </BentoCardWithIcon>
 
-            <BentoCard hover>
-              <h4 className="text-white font-semibold font-open-sans-custom mb-4">Follow Me</h4>
-              <div className="flex gap-3">
+            <div className="grid grid-cols-2 gap-4">
+              <BentoCard hover>
+                <h4 className="text-white font-semibold font-open-sans-custom mb-4">Follow Me</h4>
+                <div className="flex gap-3">
+                  <a 
+                    href="https://github.com/Leo-polenord" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                  >
+                    <SiGithub className="h-5 w-5" color="white" />
+                  </a>
+                  <a 
+                    href="https://linkedin.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                  >
+                    <SiLinkedin className="h-5 w-5" color="white" />
+                  </a>
+                </div>
+              </BentoCard>
+
+              <BentoCard hover>
+                <h4 className="text-white font-semibold font-open-sans-custom mb-4">Resume</h4>
                 <a 
-                  href="https://github.com/Leo-polenord" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                  href="/cv.pdf" 
+                  download
+                  className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
                 >
-                  <SiGithub className="h-5 w-5" color="white" />
+                  <Download className="h-5 w-5 text-white" />
+                  <span className="text-white text-sm">My CV</span>
                 </a>
-                <a 
-                  href="https://linkedin.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
-                >
-                  <SiLinkedin className="h-5 w-5" color="white" />
-                </a>
-              </div>
-            </BentoCard>
+              </BentoCard>
+            </div>
           </div>
         </div>
       </div>
