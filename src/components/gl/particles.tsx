@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef } from "react";
 import { createPortal, useFrame } from "@react-three/fiber";
 import { useFBO } from "@react-three/drei";
 
@@ -21,6 +21,7 @@ export function Particles({
   useManualTime = false,
   manualTime = 0,
   introspect = false,
+  isDark = true,
   ...props
 }: {
   speed: number;
@@ -37,6 +38,7 @@ export function Particles({
   useManualTime?: boolean;
   manualTime?: number;
   introspect?: boolean;
+  isDark?: boolean;
 }) {
   // Reveal animation state
   const revealStartTime = useRef<number | null>(null);
@@ -123,6 +125,14 @@ export function Particles({
 
     dofPointsMaterial.uniforms.uFocus.value = focus;
     dofPointsMaterial.uniforms.uBlur.value = aperture;
+
+    // Changer la couleur des particules selon le thème
+    // Blanc pour le thème sombre, violet pour le thème clair
+    const particleColor = isDark 
+      ? new THREE.Vector3(1.0, 1.0, 1.0) // Blanc
+      : new THREE.Vector3(0.7, 0.3, 1.0); // Violet vif (#B34DFF - hsl(262, 80%, 60%))
+    
+    dofPointsMaterial.uniforms.uColor.value = particleColor;
 
     easing.damp(
       dofPointsMaterial.uniforms.uTransition,
