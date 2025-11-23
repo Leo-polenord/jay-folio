@@ -98,6 +98,8 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     'about.title': 'About Me',
     'about.subtitle': 'Passionate about creating seamless digital experiences that combine aesthetics with functionality.',
+    'about.text1': "I’m a third-year Computer Science undergraduate (BUT Informatique) passionate about web development and building modern, intuitive interfaces. Through my academic and personal projects, I’ve developed strong skills in programming, application design, and teamwork. I enjoy tackling technical challenges, learning new technologies (React, TypeScript, UI/UX), and turning ideas into real solutions.",
+    'about.text2': "Curious, detail-oriented, and creative, I always strive to improve user experience and code quality. Outside of tech, I’m interested in cars, mechanics, and sports. Feel free to reach out for a chat or collaboration!",
 
     // Contact
     'contact.title': 'Get in Touch',
@@ -107,6 +109,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.name': 'Name',
     'contact.form.email': 'Email',
     'contact.form.message': 'Message',
+    'contact.form.success': 'Message sent! Thank you.',
     'contact.form.placeholder.name': 'John Doe',
     'contact.form.placeholder.email': 'john@example.com',
     'contact.form.placeholder.message': 'Tell me about your project...',
@@ -173,6 +176,8 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     'about.title': 'À propos de moi',
     'about.subtitle': 'Passionné par la création d\'expériences numériques alliant esthétique et fonctionnalité.',
+    'about.text1': "Étudiant en 3ᵉ année de BUT Informatique, je me passionne pour le développement web et la création d’interfaces modernes et intuitives. J’ai acquis de solides bases en programmation, en conception d’applications et en travail d’équipe à travers mes projets universitaires et personnels. J’aime relever des défis techniques, apprendre de nouvelles technologies (React, TypeScript, UI/UX) et transformer des idées en solutions concrètes.",
+    'about.text2': "Curieux, rigoureux et créatif, je cherche toujours à améliorer l’expérience utilisateur et la qualité du code. En dehors de l’informatique, je m’intéresse à la mécanique automobile et au sport. N’hésitez pas à me contacter pour échanger ou collaborer !",
 
     // Contact
     'contact.title': 'Me Contacter',
@@ -185,6 +190,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.placeholder.name': 'Jean Dupont',
     'contact.form.placeholder.email': 'jean@example.com',
     'contact.form.placeholder.message': 'Parlez-moi de votre projet...',
+    'contact.form.success': 'Message envoyé ! Merci.',
     'contact.form.send': 'Envoyer',
     'contact.email': 'Email',
     'contact.location': 'Localisation',

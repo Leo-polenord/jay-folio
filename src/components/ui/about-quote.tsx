@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import DotPattern from "@/components/ui/dot-pattern"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function AboutQuote() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isDark, setIsDark] = useState(true)
+
+  const { t } = useLanguage()
 
   useEffect(() => {
     // Détecter le thème initial
@@ -68,10 +71,10 @@ export function AboutQuote() {
             
             <div className="space-y-4 md:space-y-6">
               <p className="text-base md:text-xl lg:text-2xl xl:text-3xl text-foreground/90 dark:[text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-open-sans-custom leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                {t('about.text1')}
               </p>
               <p className="text-base md:text-xl lg:text-2xl xl:text-3xl text-foreground/90 dark:[text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-open-sans-custom leading-relaxed">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {t('about.text2')}
               </p>
             </div>
           </div>

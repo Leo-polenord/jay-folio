@@ -1,4 +1,4 @@
-import { forwardRef } from "react"
+import { forwardRef, useRef, useState } from "react"
 import { Input } from "./input"
 import { Button } from "./button"
 import { Label } from "./label"
@@ -10,7 +10,35 @@ import { useLanguage } from "@/context/LanguageContext"
 
 export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
   const { t } = useLanguage()
-  
+  const formRef = useRef<HTMLFormElement>(null)
+  const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState<string|null>(null)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSending(true)
+    setError(null)
+    const form = e.currentTarget
+    const data = new FormData(form)
+    try {
+      const res = await fetch("https://formspree.io/f/mpwnbwry", {
+        method: "POST",
+        body: data,
+        headers: { 'Accept': 'application/json' },
+      })
+      if (res.ok) {
+        setSent(true)
+        form.reset()
+      } else {
+        setError("Erreur lors de l'envoi. Réessayez plus tard.")
+      }
+    } catch {
+      setError("Erreur lors de l'envoi. Réessayez plus tard.")
+    }
+    setSending(false)
+  }
+
   return (
     <section
       id="contact"
@@ -38,7 +66,11 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
             <h3 className="text-xl font-bold text-foreground mb-4 font-open-sans-custom">
               {t('contact.form.title')}
             </h3>
-            <form className="space-y-4">
+            <form 
+              className="space-y-4"
+              ref={formRef}
+              onSubmit={handleSubmit}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
                   <Label className="text-foreground dark:[text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] font-open-sans-custom">
@@ -46,6 +78,8 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
                   </Label>
                   <Input
                     type="text"
+                    name="name"
+                    required
                     placeholder={t('contact.form.placeholder.name')}
                     className="bg-accent/10 border-border dark:bg-white/10 dark:border-white/20 text-foreground placeholder:text-muted-foreground dark:[text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
                   />
@@ -56,6 +90,8 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
                   </Label>
                   <Input
                     type="email"
+                    name="email"
+                    required
                     placeholder={t('contact.form.placeholder.email')}
                     className="bg-accent/10 border-border dark:bg-white/10 dark:border-white/20 text-foreground placeholder:text-muted-foreground dark:[text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)]"
                   />
@@ -66,6 +102,8 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
                   {t('contact.form.message')}
                 </Label>
                 <Textarea 
+                  name="message"
+                  required
                   placeholder={t('contact.form.placeholder.message')}
                   rows={5}
                   className="bg-accent/10 border-border dark:bg-white/10 dark:border-white/20 text-foreground placeholder:text-muted-foreground dark:[text-shadow:_0_2px_6px_rgb(0_0_0_/_40%)] resize-none" 
@@ -73,10 +111,17 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
               </div>
               <Button
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90 dark:[text-shadow:_0_1px_2px_rgb(0_0_0_/_10%)] font-open-sans-custom"
-                type="button"
+                type="submit"
+                disabled={sending}
               >
-                {t('contact.form.send')}
+                {sending ? t('contact.form.sending') || 'Envoi...' : t('contact.form.send')}
               </Button>
+              {sent && (
+                <div className="text-green-600 text-center font-semibold mt-2">{t('contact.form.success')}</div>
+              )}
+              {error && (
+                <div className="text-red-600 text-center font-semibold mt-2">{error}</div>
+              )}
             </form>
           </BentoCard>
 
@@ -112,7 +157,7 @@ export const ContactSection = forwardRef<HTMLElement>((_props, ref) => {
                     <SiGithub className="h-5 w-5 text-foreground" />
                   </a>
                   <a 
-                    href="https://linkedin.com" 
+                    href="https://www.linkedin.com/in/léo-paul-jay" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-2 rounded-lg bg-accent/20 hover:bg-accent/30 dark:bg-white/10 dark:hover:bg-white/20 transition-colors"
