@@ -67,13 +67,12 @@ export function AboutQuote() {
 
           <DotPattern width={5} height={5} />
 
-          <div className="relative z-20 mx-auto max-w-5xl rounded-[40px] py-6 md:p-10 xl:py-20">
-            
-            <div className="space-y-4 md:space-y-6">
-              <p className="text-base md:text-xl lg:text-2xl xl:text-3xl text-foreground/90 dark:[text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-open-sans-custom leading-relaxed">
+          <div className="relative z-20 mx-auto max-w-5xl rounded-[24px] py-4 px-2 sm:py-6 sm:px-4 md:p-10 xl:py-20">
+            <div className="space-y-3 sm:space-y-4 md:space-y-6">
+              <p className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl text-foreground/90 dark:[text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-open-sans-custom leading-relaxed">
                 {t('about.text1')}
               </p>
-              <p className="text-base md:text-xl lg:text-2xl xl:text-3xl text-foreground/90 dark:[text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-open-sans-custom leading-relaxed">
+              <p className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl text-foreground/90 dark:[text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)] font-open-sans-custom leading-relaxed">
                 {t('about.text2')}
               </p>
             </div>
