@@ -12,7 +12,7 @@ import MentionsLegales from "@/components/ui/mentions-legales";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Webfolio/">
       <Routes>
         <Route
           path="/"
