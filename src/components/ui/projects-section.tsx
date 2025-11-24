@@ -25,7 +25,7 @@ export const ProjectsSection = forwardRef<HTMLElement>((_props, ref) => {
     {
       title: "Portfolio Website",
       description: "A stunning portfolio website with Three.js animations, smooth scrolling, and responsive design. Built to showcase creative work.",
-      technologies: ["React", "Three.js", "Framer Motion", "Vite"],
+      technologies: ["React", "Three.js", "Motion", "Vite"],
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/example/project",
       showLiveDemo: true,

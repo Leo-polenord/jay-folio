@@ -23,7 +23,7 @@ const frontendSkills = [
   { icon: SiTypescript, name: "TypeScript", color: "#3178C6" },
   { icon: SiTailwindcss, name: "Tailwind CSS", color: "#06B6D4" },
   { icon: SiThreedotjs, name: "Three.js", color: "#000000" },
-  { icon: SiFramer, name: "Framer Motion", color: "#0055FF" },
+  { icon: SiFramer, name: "Motion", color: "#0055FF" },
   { icon: SiNextdotjs, name: "Next.js", color: "#000000" },
 ]
 
